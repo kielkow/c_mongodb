@@ -44,3 +44,9 @@ db.alunos.insert(
 
 
 db.alunos.find()                                    -> Captura os valores inseridos na collection alunos
+
+
+
+db.alunos.remove({
+	"_id": ObejectId("222")                     -> Remove o alunos com id 222
+})
