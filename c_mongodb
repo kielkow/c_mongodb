@@ -48,5 +48,5 @@ db.alunos.find()                                    -> Captura os valores inseri
 
 
 db.alunos.remove({
-	"_id": ObejectId("222")                     -> Remove o alunos com id 222
+	"_id": ObejectId("222")                     -> Remove o aluno com id 222
 })
