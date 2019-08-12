@@ -119,3 +119,30 @@ db.alunos.update(
 	      multi : true
 	}
 )
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.update(
+	{"_id" : ObjectId("123456")},                -> Atualiza o array de notas colocando o valor 
+	{                                               8.5 dentro do array
+	      $push : {
+		"notas" : 8.5
+	      } 
+	} 
+)
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.update(
+	{"_id" : ObjectId("123456")},                -> Atualiza o array de notas colocando o valor 
+	{                                               8.5 dentro do array, se este ainda não existir
+	      $addToSet : {
+		"notas" : 8.5
+	      } 
+	} 
+)
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.update(
+	{"_id" : ObjectId("123456")},                -> Atualiza o array de notas colocando o valor 
+	{                                               8.5 e 3 dentro do array
+	      $push : {
+		"notas" : { $each : [8.5, 3]
+	      } 
+	} 
+)
