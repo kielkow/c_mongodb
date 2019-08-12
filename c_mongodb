@@ -99,3 +99,23 @@ db.alunos.find({
 		$in : ["matheus", "lucas", "thiago"]
 		}
 })
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.update(
+	{"curso.nome" : "Sistema de Informação"},                -> Atualiza o nome do curso de Sistema de Informação para
+	{                                                           Sistemas de informação, em apenas 1 campo
+	      $set : {
+		"curso.nome" : "Sistemas de informação"
+	      } 
+	}
+)
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.update(
+	{"curso.nome" : "Sistema de Informação"},                -> Atualiza o nome do curso de Sistema de Informação para
+	{                                                           Sistemas de informação, para mais de 1 campo
+	      $set : {
+		"curso.nome" : "Sistemas de informação"
+	      } 
+	}, {
+	      multi : true
+	}
+)
