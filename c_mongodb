@@ -1,16 +1,16 @@
 MongoDB anotations:
 
 *MongoDB funciona como um JSON em Javascript
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 db.createCollection("alunos")                        -> Criando coleção com nome alunos
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 db.alunos.insert(
 	{
 		"nome": "felipe",                            -> Inserindo um aluno de nome felipe e com data_nascimento 26/02/1994
 		"data_nascimento": new Date(1994,02,26)
 	}
 )
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 db.alunos.insert(
 	{
 		"nome": "matheus",                           -> Inserindo um aluno de nome matheus, nascido em 03/06/2000 e cursando SI
@@ -20,7 +20,7 @@ db.alunos.insert(
 		}
 	}
 )
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 db.alunos.insert(
 	{
 		"nome": "matheus",                           -> Inserindo um aluno de nome matheus, nascido em 03/06/2000, cursando SI,
@@ -41,12 +41,39 @@ db.alunos.insert(
 		]
 	}
 )
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 db.alunos.find()                                    -> Captura os valores inseridos na collection alunos
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 
 db.alunos.remove({
 	"_id": ObejectId("222")                     -> Remove o aluno com id 222
 })
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find().pretty()                           -> Traz os objetos de maneira mais legível
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find(                                     -> Traz os alunos com nome matheus
+	{
+	   "nome": "matheus"
+	}
+)
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find(                                     -> Traz os alunos com nome matheus de maneira mais legível
+	{
+	   "nome": "matheus"
+	}
+).pretty()
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find(                                     -> Traz os alunos que possuem habilidade com nome ingles
+	{
+	   "habilidades.nome" = "ingles"
+	}
+)
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find(
+	{
+	   "nome": "matheus",                       -> Traz os alunos com nome felipe e que possuem habilidade com nome ingles
+	   "habilidades.nome" = "ingles"
+	}
+)
