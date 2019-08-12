@@ -142,7 +142,7 @@ db.alunos.update(
 	{"_id" : ObjectId("123456")},                -> Atualiza o array de notas colocando o valor 
 	{                                               8.5 e 3 dentro do array
 	      $push : {
-		"notas" : { $each : [8.5, 3]
+		"notas" : { $each : [8.5, 3] }
 	      } 
 	} 
 )
