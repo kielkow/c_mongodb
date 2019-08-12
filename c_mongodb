@@ -77,3 +77,25 @@ db.alunos.find(
 	   "habilidades.nome" = "ingles"
 	}
 )
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find({
+	$or: [                                                 -> Traz os cursos com nome sistemas de informação ou matemática
+		{"curso.nome" : "sistemas de informação"},  
+		{"curso.nome" : "matematica"}
+	]
+})
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find({
+	$or: [                                                 -> Traz os alunos com nome daniela que estejam fazendo um dos 3 cursos
+		{"curso.nome" : "sistemas de informação"},  
+		{"curso.nome" : "matematica"},
+		{"curso.nome" : "moda"}
+	],
+	"nome" : "daniela"
+})
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find({                                              
+	"nome" : {                                              -> Traz os alunos com nome matheus, lucas ou thiago
+		$in : ["matheus", "lucas", "thiago"]
+		}
+})
