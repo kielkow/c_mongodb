@@ -151,3 +151,11 @@ db.alunos.update(
    { "tabela": "abc123" },                                   -> Na tabela abc123, irá diminuir -2 da quantidade e somar 1 das orders
    { $inc: { quantidade: -2, "metrics.orders": 1 } }            dentro de metrics
 )
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find({
+	"notas" : { $gt : 5}                                 -> Procura por alunos que tenham nota maior que 5
+})
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.findOne({
+	"notas" : { $gt : 5}                                 -> Procura por apenas 1 aluno que tenha nota maior que 5
+})
