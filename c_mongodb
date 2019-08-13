@@ -170,3 +170,20 @@ db.alunos.find().sort({"nome" : 1}).limit(3)                 -> Ordena a partir 
 db.alunos.find({
 	"notas" : { $lt : 5}                                 -> Procura por alunos que tenham nota menor que 5
 })
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.update({
+	{"_id" : ObjectId("123")},                           -> Atualiza um aluno de id 123 para ter como característica a localizacao
+	{
+		$set : {
+			"localizacao" : {
+				"endereco" : "Rua Verguero, 3185"
+			}
+		}
+	}
+})
+
+
+
+
+
+
