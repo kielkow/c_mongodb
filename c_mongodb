@@ -166,3 +166,7 @@ db.alunos.find().sort({"nome" : -1})                         -> Ordena a partir 
 -----------------------------------------------------------------------------------------------------------------------------------------
 db.alunos.find().sort({"nome" : 1}).limit(3)                 -> Ordena a partir do campo nome, de maneira crescente, mostrando apenas
                                                                 os 3 primeiros elementos
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.find({
+	"notas" : { $gt : 5}                                 -> Procura por alunos que tenham nota menor que 5
+})
