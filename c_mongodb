@@ -181,7 +181,28 @@ db.alunos.update({
 		}
 	}
 })
-
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.update({
+	{"_id" : ObjectId("123")},                           
+	{
+		$set : {
+			"localizacao" : {                           ->  Atualizando o elemento de id 123, para receber informações de localizacao.
+				"endereco" : "Rua Verguero, 3185",      Sendo que para o MongoDB trabalhar com geolocalizacao é necessário passar
+				"cidade" : "SP",                        os valores de coordinates e type
+				"pais" : "BR",
+				"coordinates" : [
+					-23.456456,
+					-46.797897
+				],
+				"type" : "Point"
+			}
+		}
+	}
+})
+-----------------------------------------------------------------------------------------------------------------------------------------
+mongoimport -c alunos --jsonArray < alunos.json    -> Importar do arquivo alunos.json, um json dentro de um array, para coleção alunos
+                                                      *Comando via terminal
+						
 
 
 
