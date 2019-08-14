@@ -201,10 +201,26 @@ db.alunos.update({
 })
 -----------------------------------------------------------------------------------------------------------------------------------------
 mongoimport -c alunos --jsonArray < alunos.json    -> Importar do arquivo alunos.json, um json dentro de um array, para coleção alunos
-                                                      *Comando via terminal
-						
+                                                      *Comando via terminal						
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.createIndex({                            -> Cria um índice de busca localizacao com tipo de uma esfera 2D
+	localizacao : "2dsphere"
+})
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.alunos.aggregate([
+{                                                          -> Agrega da coleção alunos, os elementos que possuem uma geolocalizacao
+	$geoNear : {                                          mais proxima, a partir dos valores colocados em coordinates
+		near : {
+			coordinates : [-23.647465, -46.7584645],
+			type : "Point"
+		},
+		distanceField : "distancia.calculada",     -> Campo que irá receber o calculo da distancia entre os pontos
+		spherical : true,                          -> Utiliza de uma esfera para calcular a distancia entre os dois pontos
+		num : 3                                    -> Traz só os 3 mais próximos		
+	}
+},
+{ $skip : 1}                                               -> Irá ignorar o primeiro elemento buscado           
+])
 
-
-
-
-
+*Necessário criar um índice de busca antes, como o localizacao acima, para o comando funcionar
+-----------------------------------------------------------------------------------------------------------------------------------------
